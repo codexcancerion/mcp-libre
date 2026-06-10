@@ -1,0 +1,17 @@
+[Unit]
+Description=LibreOffice MCP HTTP Server
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/mcp/mcp-libre-http.env
+WorkingDirectory=/path/to/mcp-libre
+ExecStart=/usr/bin/env bash -c 'cd "$PROJECT_ROOT" && ./scripts/start-http-mcp.sh start'
+Restart=always
+RestartSec=5
+User=your-user
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
